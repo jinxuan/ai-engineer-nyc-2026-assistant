@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talk Copilot</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<aside id="sidebar">
+  <button id="new-talk" class="btn block" data-i18n="app.newTalk"></button>
+  <nav id="talk-list"></nav>
+  <p id="status-line" class="muted small"></p>
+</aside>
+
+<main id="main">
+  <p id="notice" class="notice" hidden></p>
+  <section id="empty" class="empty">
+    <h2 data-i18n="app.emptyTitle"></h2>
+    <p class="muted" data-i18n="app.emptyBody"></p>
+  </section>
+
+  <section id="talk" hidden>
+    <header id="talk-head">
+      <div class="head-row">
+        <button id="menu-btn" class="btn menu-btn" data-i18n-title="app.menu">☰</button>
+        <div class="head-info">
+          <h1 id="t-title"></h1>
+          <p id="t-meta"></p>
+        </div>
+        <div class="head-actions">
+          <button id="rec-cut" class="btn" hidden data-i18n="rec.cut" data-i18n-title="rec.cutTitle"></button>
+          <button id="rec-btn" class="btn rec-btn"><span class="rec-dot"></span><span id="rec-label" data-i18n="rec.start"></span></button>
+          <button id="import-btn" class="btn" data-i18n="import.button" data-i18n-title="import.title"></button>
+          <input id="import-input" type="file" multiple hidden>
+        </div>
+      </div>
+      <nav class="tabs">
+        <button data-view="prep" class="tab" data-i18n="tab.prep"></button>
+        <button data-view="live" class="tab active" data-i18n="tab.live"></button>
+        <button data-view="digest" class="tab" data-i18n="tab.digest"></button>
+        <button data-view="info" class="tab" data-i18n="tab.info"></button>
+      </nav>
+    </header>
+
+    <div id="view-live" class="view live">
+      <section class="notes-col">
+        <div id="notes" contenteditable="true" spellcheck="false"></div>
+      </section>
+      <section class="side-col">
+        <div class="seg">
+          <button data-side="chat" class="active" data-i18n="seg.chat"></button>
+          <button data-side="transcript"><span data-i18n="seg.transcript"></span> <span id="seg-tr" class="count"></span></button>
+          <button data-side="slides"><span data-i18n="seg.slides"></span> <span id="seg-sl" class="count"></span></button>
+        </div>
+
+        <div id="side-chat" class="side-panel chat">
+          <div class="chat-tools">
+            <div id="modes"></div>
+            <button id="chat-reset" class="link small" data-i18n="chat.new" data-i18n-title="chat.newTitle"></button>
+          </div>
+          <div id="chat-log"></div>
+          <form id="chat-form">
+            <textarea id="chat-input" rows="2" data-i18n-ph="chat.placeholder"></textarea>
+            <div class="chat-send"><span class="muted small" data-i18n="chat.sendHint"></span><button type="submit" class="btn primary" data-i18n="chat.send"></button></div>
+          </form>
+        </div>
+
+        <div id="side-transcript" class="side-panel" hidden>
+          <div class="tr-summary">
+            <div class="tr-top"><span id="tr-status"></span><button id="structure-btn" class="link small"></button></div>
+            <div class="prog"><b id="tr-prog"></b></div>
+            <select id="toc" hidden></select>
+            <details id="chunks-box"><summary class="small muted" data-i18n="tr.details"></summary><div id="chunks"></div></details>
+          </div>
+          <div id="transcript"></div>
+        </div>
+
+        <div id="side-slides" class="side-panel" hidden>
+          <div id="slides"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-prep" class="view doc-view" hidden>
+      <div class="doc-bar">
+        <button id="prep-btn" class="btn primary" data-i18n="prep.start"></button>
+        <span id="prep-status" class="muted small"></span>
+      </div>
+      <details id="prep-steps-box" class="steps-box"><summary id="prep-steps-sum"></summary><ol id="prep-steps" class="steps"></ol></details>
+      <article id="prep" class="doc"></article>
+      <p id="prep-empty" class="doc-empty muted" data-i18n="prep.empty"></p>
+    </div>
+
+    <div id="view-digest" class="view doc-view" hidden>
+      <div class="doc-bar">
+        <button id="digest-btn" class="btn primary" data-i18n="digest.generate"></button>
+        <span id="digest-materials" class="muted small"></span>
+        <span id="digest-status" class="small"></span>
+      </div>
+      <article id="digest" class="doc"></article>
+      <p id="digest-empty" class="doc-empty muted" data-i18n="digest.empty"></p>
+    </div>
+
+    <div id="view-info" class="view doc-view" hidden>
+      <div class="info">
+        <h3 data-i18n="info.speakers"></h3>
+        <div id="speakers"></div>
+        <button id="speaker-add" class="link small" data-i18n="info.addSpeaker"></button>
+        <h3 data-i18n="info.links"></h3>
+        <p class="muted small" data-i18n="info.linksHint"></p>
+        <div id="refs"></div>
+        <form id="ref-form" class="ref-form">
+          <input id="ref-url" placeholder="https://github.com/…">
+          <input id="ref-note" data-i18n-ph="info.notePh">
+          <button class="btn" type="submit" data-i18n="info.add"></button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" hidden>
+  <button class="lb-nav lb-prev" data-i18n-aria="lb.prev">‹</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-nav lb-next" data-i18n-aria="lb.next">›</button>
+  <button class="lb-close" data-i18n-aria="lb.close">✕</button>
+</div>
+
+<dialog id="new-dialog">
+  <form method="dialog" id="new-form">
+    <h2 data-i18n="nf.title"></h2>
+    <div class="seg nf-seg">
+      <button type="button" data-nf="links" class="active" data-i18n="nf.links"></button>
+      <button type="button" data-nf="pick" data-i18n="nf.pick"></button>
+    </div>
+    <div id="nf-links">
+      <label><span data-i18n="nf.linkLabel"></span> <span class="muted" data-i18n="nf.linkHint"></span>
+        <textarea id="nf-link" rows="3" placeholder="https://ai.engineer/nyc/2026/schedule?session=…"></textarea>
+      </label>
+      <div id="nf-preview" class="muted small"></div>
+      <details>
+        <summary class="small" data-i18n="nf.manual"></summary>
+        <label><span data-i18n="nf.titleLabel"></span> <input id="nf-title" placeholder="Hallway chat with …"></label>
+        <label><span data-i18n="nf.speakersLabel"></span> <input id="nf-speakers" placeholder="Jane Doe, John Roe"></label>
+      </details>
+    </div>
+    <div id="nf-pick" hidden>
+      <div class="pick-bar">
+        <input id="nf-date" type="date">
+        <label class="small muted"><input id="nf-all" type="checkbox"> <span data-i18n="nf.showBreaks"></span></label>
+      </div>
+      <div id="nf-list" class="pick-list"></div>
+    </div>
+    <p id="nf-error" class="error small"></p>
+    <div class="row">
+      <button class="btn" value="cancel" formnovalidate data-i18n="nf.cancel"></button>
+      <button id="nf-create" class="btn primary" value="default" data-i18n="nf.create"></button>
+    </div>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script type="module" src="/app.js"></script>
+</body>
+</html>

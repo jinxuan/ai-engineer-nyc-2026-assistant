@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Quiz me",
+    "prompt": "Quiz me on this talk. One question at a time, testing understanding and application rather than trivia. After I answer, tell me what I got right and wrong (quote the speaker with the time), then ask the next one. 3–5 questions in total."
+  },
+  {
+    "label": "Explain back",
+    "prompt": "I want to explain one topic in my own words. First list the topics in my notes and let me pick one; after I explain it, point out where I misunderstood the speaker and what key points I missed, then give a more accurate one-sentence version."
+  },
+  {
+    "label": "Why it matters to me",
+    "prompt": "I want to talk about how this talk relates to my own work. First ask what I'm working on and thinking about lately, then discuss: which ideas I can use directly and how, which don't hold in my situation, and why."
+  },
+  {
+    "label": "Questions to ask",
+    "prompt": "Suggest 5 questions I could ask the speaker in person. Don't ask what they already explained; prefer weak spots in the argument, limits of applicability, practical details or trade-offs. Write each question the way I'd say it out loud (one or two sentences), followed by one line on why it's worth asking. Best first."
+  },
+  {
+    "label": "What did I miss",
+    "prompt": "Compare against the transcript and list points the speaker emphasized that aren't in my notes. For each, give the time [mm:ss], one quote, and how it relates to what I did write down. At most 7, most important first."
+  }
+]

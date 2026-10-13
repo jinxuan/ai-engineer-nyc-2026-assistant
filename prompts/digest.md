@@ -14,7 +14,7 @@ Write a complete write-up of the talk I just attended. Your final reply is the w
 - **Only quote words that actually appear in the transcript**, with [mm:ss]. Fix obvious recognition errors from context and slides (e.g. command names follow the slide); mark anything uncertain "(unclear in transcript)".
 - Don't invent numbers, names or conclusions. Your own additions go in a separate "> My take:" quote, at most one per section, optional.
 
-## Style (modeled on Latent Space's conference write-ups)
+## Style
 - Opening: title + a one-line subtitle (what the talk covered and why it's worth reading) + the setting (conference, date, speakers and roles; link a speaker's name or handle when X / LinkedIn / GitHub / website is known). Then a 2–4 sentence intro stating the core argument.
 - A "TL;DR" with 3–5 bullets.
 - One section per theme. Section headings are one-line claims, not nouns. Short paragraphs (2–4 sentences), key terms in bold, with the speaker's words.

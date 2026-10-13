@@ -1,6 +1,6 @@
 # AI Engineer NYC 2026 Assistant
 
-A local web app for getting more out of conference talks, built during [AI Engineer NYC 2026](https://ai.engineer/nyc/2026). It records and transcribes on your Mac, keeps your notes timestamped against the recording, lets you ask Claude about what was just said, and turns it all into a Latent Space–style write-up afterwards.
+A local web app for getting more out of conference talks, built during [AI Engineer NYC 2026](https://ai.engineer/nyc/2026). It records and transcribes on your Mac, keeps your notes timestamped against the recording, lets you ask Claude about what was just said, and turns it all into a write-up afterwards.
 
 **Your notes are the backbone; the transcript is support.** Write-ups and reviews follow what you chose to write down, and use the transcript for detail and exact quotes.
 
